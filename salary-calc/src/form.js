@@ -17,6 +17,21 @@ class Form extends Component {
             taxableIncome: 0,
             pensionRate: 0.05,
             nationalInsurance: 0,
+            showResults : false,
+    showResultsTable(){this.setState({showResults : true})
+        if(this.state.salary > 0){
+            
+        }
+    }
+    calculateNI(){
+        this.CalculateSalary()
+        if(this.state.salary > 9568){
+            this.setState({nationalInsurance : (this.state.salary - 9568) * 0.12 });
+        }
+        else {
+            this.setState({nationalInsurance : (this.state.salary) * 0.12 });
+        }
+
     }
     CalculateSalary(){
         if(this.state.paid === "yearly"){
@@ -93,6 +108,9 @@ class Form extends Component {
                     </div>
                     <div>
                             <table className="w-full rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+                    {this.state.showResults === true ? (
+                            <div>
+                            <table className="text-left w-full rounded-t-lg m-5 w-5/6 mx-auto text-red-700 text-white font-bold">
                                 <tbody>
                                     <tr className="text-left border-b border-gray-300">
                                         <th className="px-4 py-3"></th>
@@ -154,8 +172,12 @@ class Form extends Component {
                                 </tbody>
                             </table>
 
-                    </div>
-                </div>
+                            </div>
+
+                    ) : (
+                        <span></span>
+                    )}
+                   </div>
             </div>
          );
     }
