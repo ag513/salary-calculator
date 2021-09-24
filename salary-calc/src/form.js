@@ -25,6 +25,12 @@ class Form extends Component {
         //     this.setState({salary : (this.state.salary * (this.state.numberOfHoursWorkedInAWeek * 52))});
         // }
 
+        if(this.state.salary > 12570){
+            this.setState({taxableIncome : this.state.salary - 12570 });
+        } else {
+            this.setState({taxableIncome : 0 });
+        }
+    }
     handleSalaryChange(event) {
         this.setState({showResults : false});
         this.setState({salary : event.target.value});
