@@ -22,6 +22,29 @@ class Form extends Component {
         //     this.setState({salary : (this.state.salary * (this.state.numberOfHoursWorkedInAWeek * 52))});
         // }
 
+    handleSalaryChange(event) {
+        this.setState({showResults : false});
+        this.setState({salary : event.target.value});
+        // if(this.state.paid === "yearly"){
+        //     this.setState({salary : event.target.value});
+        // } 
+        // else if(this.state.paid === "monthly"){
+        //     this.setState({salary : event.target.value * 12});
+        // }
+        // else if(this.state.paid === "weekly"){
+        //     this.setState({salary : event.target.value * 52});
+        // }
+        // else if(this.state.paid === "daily"){
+        //     this.setState({salary : event.target.value * 355});
+        // }
+        // else if(this.state.paid === "hourly"){
+        //     this.setState({salary : (event.target.value * (this.state.numberOfHoursWorkedInAWeek * 52))});
+        // }
+    }
+    handleSelectChange(event){
+        this.setState({paid: event.target.value});
+       this.CalculateSalary()
+    }  
     render() { 
         return ( 
             <div className="App flex items-center justify-center min-h-screen">
