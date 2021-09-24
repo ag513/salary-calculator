@@ -3,7 +3,24 @@ import React, { Component } from 'react'
 class Form extends Component {
     constructor(props) {
         super(props);
+        this.CalculateSalary = this.CalculateSalary.bind(this);
     }
+    CalculateSalary(){
+        if(this.state.paid === "yearly"){
+            this.setState({salary : this.state.salary});
+        } 
+        // else if(this.state.paid === "monthly"){
+        //     this.setState({salary : this.state.salary * 12});
+        // }
+        // else if(this.state.paid === "weekly"){
+        //     this.setState({salary : this.state.salary * 52});
+        // }
+        // else if(this.state.paid === "daily"){
+        //     this.setState({salary : this.state.salary * 355});
+        // }
+        // else if(this.state.paid === "hourly"){
+        //     this.setState({salary : (this.state.salary * (this.state.numberOfHoursWorkedInAWeek * 52))});
+        // }
 
     render() { 
         return ( 
@@ -45,11 +62,11 @@ class Form extends Component {
                                     </tr>
                                     <tr className="bg-gray-700 border-b border-gray-600">
                                         <td className="px-4 py-3">Gross Salary</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
+                                        <td className="px-4 py-3">{this.state.salary}</td>
+                                        <td className="px-4 py-3">{parseFloat(this.state.salary/12).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(this.state.salary/52).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(this.state.salary/355).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(this.state.salary/1950).toFixed(1)}</td>
                                     </tr>
                                     <tr className="bg-gray-700 border-b border-gray-600">
                                         <td className="px-4 py-3">Income Tax</td>
