@@ -109,6 +109,14 @@ class Form extends Component {
                                         <td className="px-4 py-3">{parseFloat((this.state.salary * this.state.pensionRate)/355).toFixed(1)}</td>
                                         <td className="px-4 py-3">{parseFloat((this.state.salary * this.state.pensionRate)/1950).toFixed(1)}</td>
                                     </tr>    
+                                    <tr className="text-red-700">
+                                        <td className="px-4 py-3">Taxable Income</td>
+                                        <td className="px-4 py-3">{parseFloat(this.state.taxableIncome).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.taxableIncome)/12).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.taxableIncome)/52).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.taxableIncome)/355).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.taxableIncome)/1950).toFixed(1)}</td>
+                                    </tr>        
                                         <td className="px-4 py-3">Income Tax</td>
                                         <td className="px-4 py-3">0</td>
                                         <td className="px-4 py-3">0</td>
