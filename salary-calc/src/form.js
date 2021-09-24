@@ -135,12 +135,13 @@ class Form extends Component {
                                         <td className="px-4 py-3">{parseFloat((this.state.taxableIncome * 0.2)/355).toFixed(1)}</td>
                                         <td className="px-4 py-3">{parseFloat((this.state.taxableIncome * 0.2)/1950).toFixed(1)}</td>
                                     </tr>        
+                                    <tr className="text-red-700">
                                         <td className="px-4 py-3">Net Salary</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
-                                        <td className="px-4 py-3">0</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.salary) - (this.state.nationalInsurance) - (this.state.taxableIncome * 0.2) - (this.state.salary * this.state.pensionRate) ).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(((this.state.salary) - (this.state.nationalInsurance) - (this.state.salary * this.state.pensionRate) - (this.state.taxableIncome * 0.2))/12).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(((this.state.salary) - (this.state.nationalInsurance) - (this.state.salary * this.state.pensionRate) - (this.state.taxableIncome * 0.2))/52).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(((this.state.salary) - (this.state.nationalInsurance) - (this.state.salary * this.state.pensionRate) - (this.state.taxableIncome * 0.2))/355).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat(((this.state.salary) - (this.state.nationalInsurance) - (this.state.salary * this.state.pensionRate) - (this.state.taxableIncome * 0.2))/1950).toFixed(1)}</td>
                                     </tr>    
                                 </tbody>
                             </table>
