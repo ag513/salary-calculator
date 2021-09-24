@@ -4,6 +4,9 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.CalculateSalary = this.CalculateSalary.bind(this);
+            salary : 0,
+            paid : 'yearly',
+            pensionRate: 0.05,
     }
     CalculateSalary(){
         if(this.state.paid === "yearly"){
@@ -92,6 +95,14 @@ class Form extends Component {
                                         <td className="px-4 py-3">{parseFloat(this.state.salary/1950).toFixed(1)}</td>
                                     </tr>
                                     <tr className="bg-gray-700 border-b border-gray-600">
+                                    <tr className="text-red-700">
+                                        <td className="px-4 py-3">Pension</td>
+                                        <td className="px-4 py-3">{parseFloat(this.state.salary * this.state.pensionRate).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.salary * this.state.pensionRate)/12).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.salary * this.state.pensionRate)/52).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.salary * this.state.pensionRate)/355).toFixed(1)}</td>
+                                        <td className="px-4 py-3">{parseFloat((this.state.salary * this.state.pensionRate)/1950).toFixed(1)}</td>
+                                    </tr>    
                                         <td className="px-4 py-3">Income Tax</td>
                                         <td className="px-4 py-3">0</td>
                                         <td className="px-4 py-3">0</td>
