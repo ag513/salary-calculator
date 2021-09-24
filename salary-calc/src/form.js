@@ -18,6 +18,25 @@ class Form extends Component {
             pensionRate: 0.05,
             nationalInsurance: 0,
             showResults : false,
+            numberOfHoursWorkedInAWeek : 37.5
+          }
+    }
+    handleSubmit(event){
+        if(this.state.salary > 0){
+            this.CalculateSalary();
+            this.calculateNI() 
+            this.showResultsTable();
+        }
+        else{
+            alert("Enter Salary")
+        }
+        event.preventDefault();
+    }
+    // onClick(){
+    //     this.CalculateSalary();
+    //     this.calculateNI() 
+    //     this.showResultsTable();
+    // }
     showResultsTable(){this.setState({showResults : true})
         if(this.state.salary > 0){
             
