@@ -3,7 +3,15 @@ import React, { Component } from 'react'
 class Form extends Component {
     constructor(props) {
         super(props);
+        // this.onClick = this.onClick.bind(this);
         this.CalculateSalary = this.CalculateSalary.bind(this);
+        this.calculateNI = this.calculateNI.bind(this);
+        // this.calculatePension = this.calculatePension.bind(this);
+        this.handleSalaryChange = this.handleSalaryChange.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
+        this.showResultsTable = this.showResultsTable.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {
             salary : 0,
             paid : 'yearly',
             taxableIncome: 0,
