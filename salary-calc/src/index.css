@@ -19,7 +19,6 @@ body::after{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(pound.jpg);
   background-size: cover;
   opacity: 0.1;
   z-index: -1;
@@ -35,6 +34,6 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 input::placeholder{
-  @apply text-red-700;
+  @apply text-white;
 }
 
