@@ -15,7 +15,8 @@ class Form extends Component {
             taxableincome: {},
             incometax: {},
             netpay: {},
-            showResults: false
+            showResults: false,
+            showLoader: false
 
         }
     }
@@ -32,15 +33,17 @@ class Form extends Component {
         this.setState({ showResults: true })
     }
     CalculateSalary() {
+        this.setState({ showLoader: true });
         fetch('https://gunishetty-salary-calc-api.herokuapp.com/?annualPay=' + this.state.salary).then((res) => {
             res.json().then((data) => {
-                this.showResultsTable()
+                this.setState({ showLoader: false });
                 this.setState({ gross: data.gross })
                 this.setState({ pension: data.pension })
                 this.setState({ nationalinsurance: data.nationalinsurance })
                 this.setState({ taxableincome: data.taxableincome })
                 this.setState({ incometax: data.incometax })
                 this.setState({ netpay: data.netpay })
+                this.showResultsTable()
             })
         })
     }
@@ -59,6 +62,11 @@ class Form extends Component {
     render() {
         return (
             <div className="App flex items-center justify-center min-h-screen bg-gray-900">
+                {this.state.showLoader === true ? (
+                    <div className="loader">
+                        <img src="./reload-cat.gif" />
+                    </div>
+                ) : (<></>)}
                 <div className="">
                     <div className="max-w-xl w-full mx-auto p-4 md:p-6 ">
                         <div className="flex justify-center">
@@ -122,22 +130,30 @@ class Form extends Component {
                                         <td className="p-3 text-left">{this.state.nationalinsurance.daily}</td>
                                         <td className="p-3 text-left">{this.state.nationalinsurance.hourly}</td>
                                     </tr>
-                                    <tr className="bg-gray-800 my-2">
-                                        <td className="p-3 text-left">Taxable Income</td>
-                                        <td className="p-3 text-left">{this.state.taxableincome.yearly}</td>
-                                        <td className="p-3 text-left">{this.state.taxableincome.monthly}</td>
-                                        <td className="p-3 text-left">{this.state.taxableincome.weekly}</td>
-                                        <td className="p-3 text-left">{this.state.taxableincome.daily}</td>
-                                        <td className="p-3 text-left">{this.state.taxableincome.hourly}</td>
-                                    </tr>
-                                    <tr className="bg-gray-800 my-2">
-                                        <td className="p-3 text-left">Income Tax</td>
-                                        <td className="p-3 text-left">{this.state.incometax.yearly}</td>
-                                        <td className="p-3 text-left">{this.state.incometax.monthly}</td>
-                                        <td className="p-3 text-left">{this.state.incometax.weekly}</td>
-                                        <td className="p-3 text-left">{this.state.incometax.daily}</td>
-                                        <td className="p-3 text-left">{this.state.incometax.hourly}</td>
-                                    </tr>
+                                    {
+                                        this.state.taxableincome.yearly != 0 ? (
+                                            <>
+                                                <tr className="bg-gray-800 my-2">
+                                                    <td className="p-3 text-left">Taxable Income</td>
+                                                    <td className="p-3 text-left">{this.state.taxableincome.yearly}</td>
+                                                    <td className="p-3 text-left">{this.state.taxableincome.monthly}</td>
+                                                    <td className="p-3 text-left">{this.state.taxableincome.weekly}</td>
+                                                    <td className="p-3 text-left">{this.state.taxableincome.daily}</td>
+                                                    <td className="p-3 text-left">{this.state.taxableincome.hourly}</td>
+                                                </tr>
+                                                <tr className="bg-gray-800 my-2">
+                                                    <td className="p-3 text-left">Income Tax</td>
+                                                    <td className="p-3 text-left">{this.state.incometax.yearly}</td>
+                                                    <td className="p-3 text-left">{this.state.incometax.monthly}</td>
+                                                    <td className="p-3 text-left">{this.state.incometax.weekly}</td>
+                                                    <td className="p-3 text-left">{this.state.incometax.daily}</td>
+                                                    <td className="p-3 text-left">{this.state.incometax.hourly}</td>
+                                                </tr>
+                                            </>
+                                        ) : (
+                                            <></>
+                                        )
+                                    }
                                     <tr className="bg-gray-800 my-2">
                                         <td className="p-3 text-left">Net Salary</td>
                                         <td className="p-3 text-left">{this.state.netpay.yearly}</td>
